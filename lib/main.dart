@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MainScreen(),
     );
   }
@@ -47,33 +48,33 @@ class _HomeScreenState extends State<MainScreen> {
       //   title: const Text("Bottom Navigation Bar"),       // AppBar not in App
       // ),
       bottomNavigationBar: BottomNavigationBar(        // Bottom Navigation Starts
-        // showSelectedLabels: false, // both are used to hide lables
-        showUnselectedLabels: false, // which shows below the icon
-        backgroundColor: Colors.indigo, // Set background color to indigo
-        type: BottomNavigationBarType.fixed, // Ensures fixed color
-        onTap: (index) {
+        showSelectedLabels: true, // when you select any of them, will be labeled with its name at the bottom , you have set it <true> which means yes when i select one of them(icon) it shows its name
+        showUnselectedLabels: true, // when unselectd, will be labeled with its name at the bottom Or Not, you have set it <true> which means yes unselectd shows its name
+        backgroundColor: const Color.fromARGB(210, 2, 136, 219), // Set background color 
+        type: BottomNavigationBarType.fixed, // Ensures fixed color not extra colors will be picked if you fixed it  this color
+        onTap: (index) { //function for selecting bottom navigation
           setState(() {
             myIndex = index;
           });
         },
         currentIndex: myIndex,
-        selectedItemColor: Colors.white, // Optional: Change selected item color
-        unselectedItemColor: const Color.fromARGB(
-            255, 255, 243, 20), // Optional: Change unselected item color
+        selectedItemColor: const Color.fromARGB(242, 249, 172, 7), // Optional: Change selected item color to this
+        unselectedItemColor: const Color.fromARGB(255, 20, 255, 28), // Optional: Change unselected item color to this
 
         items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: "Home",
-              backgroundColor: Colors.amber),
+              // backgroundColor: Colors.amber  These colors are not in use because of you used a propertiy named type >>  type: BottomNavigationBarType.fixed that color will be used
+              ),
           BottomNavigationBarItem(
               icon: Icon(Icons.search),
               label: "Search",
-              backgroundColor: Colors.indigo),
+              backgroundColor: Colors.indigo), // not picked 
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite),
               label: "Favorite",
-              backgroundColor: Colors.orange),
+              backgroundColor: Colors.orange),  // not picked
           BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: "Profile",
